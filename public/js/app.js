@@ -21,6 +21,10 @@
      * @return {void}
      */
     function appearance() {
+        if (!/appearance/.test(window.location.href)) {
+            return;
+        }
+
         var firstProduct = document.querySelector('.appearance__item__product');
         var firstIndicator = document.querySelector(
             '.product-indicator[data-uuid="' + firstProduct.getAttribute('data-uuid') + '"]'
@@ -51,10 +55,57 @@
         });
     }
 
-    ready(function () {
-        if (/appearance/.test(window.location.href)) {
-            appearance();
-        }
-    });
+    /**
+     * Set up everything that is needed for a single page application.
+
+     * @return {void}
+     */
+    function spa() {
+        var anchors = document.querySelectorAll('a[href^="/"]');
+
+        Array.prototype.forEach.call(anchors, function (anchor) {
+            anchor.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                var href = event.currentTarget.getAttribute('href');
+                history.pushState(null, null, href);
+                fetchHTML(href);
+            });
+        });
+
+        window.addEventListener('popstate', function() {
+            fetchHTML(window.location.pathname);
+        });
+    }
+
+    /**
+     * Fetch the HTML for the href that is passed in.
+     *
+     * @param  {String} href
+     * @return {void}
+     */
+    function fetchHTML(href) {
+       fetch('http://0.0.0.0:3000/api' + href)
+           .then(function(response) { return response.text(); })
+           .then(function(body) {
+               document.querySelector('.inner-wrapper')
+                   .innerHTML = body;
+
+               onPageLoad();
+           });
+    }
+
+    /**
+     * Logic that should be invoked on every page load. Also from changing URL
+     * with pushstate/popstate.
+     *
+     * @return {void}
+     */
+    function onPageLoad() {
+        spa();
+        appearance();
+    }
+
+    ready(onPageLoad);
 }());
 

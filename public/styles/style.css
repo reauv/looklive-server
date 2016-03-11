@@ -84,16 +84,7 @@ body {
     max-width: 100%;
 }
 
-.feed-list__item__avatar {
-    width: 2em;
-    height: 2em;
-    margin-right: .5em;
-    border-radius: 50%;
-}
-
-.feed-list-item__name {
-    font-size: 16px;
-
+.feed-list__item__person {
     display: -webkit-flex;
     display: flex;
 
@@ -101,6 +92,17 @@ body {
     align-items: center;
 
     margin-bottom: .5em;
+}
+
+.feed-list__item__person__avatar {
+    width: 2em;
+    height: 2em;
+    margin-right: .5em;
+    border-radius: 50%;
+}
+
+.feed-list-item__person__name {
+    font-size: 16px;
 }
 
 .feed-list-item__title {

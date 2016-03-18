@@ -64,7 +64,7 @@
      * @return {void}
      */
     function fetchHTML(href) {
-       fetch('http://localhost:3000/api' + href)
+       fetch('/api' + href)
            .then(function (response) { return response.text(); })
            .then(function (body) {
                document.querySelector('.inner-wrapper')

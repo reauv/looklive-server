@@ -14,12 +14,12 @@
             <h1 class="appearance__title">{{ item.title }}</h1>
         </header>
 
-        <div class="appearance__list">
+        <section class="appearance__list">
             <h1 class="appearance__list__title">Products</h1>
-            <div class="appearance__item">
+            <article class="appearance__item">
                 {{#each products}}
-                    <div class="appearance__item__product" data-uuid="{{id}}">
-                        <div class="appearance__item__category">
+                    <section class="appearance__item__product" data-uuid="{{id}}">
+                        <article class="appearance__item__category">
                             <header>
                                 <h1 class="appearance__item__category__title">
                                     Actual
@@ -34,9 +34,9 @@
                                     {{ brand.name }}
                                 </h2>
                             </div>
-                        </div>
+                        </article>
                         {{#each similars}}
-                            <div class="appearance__item__category">
+                            <article class="appearance__item__category">
                                 <header>
                                     <h1 class="appearance__item__category__title">
                                         Similar
@@ -51,11 +51,11 @@
                                         {{ brand.name }}
                                     </h2>
                                 </div>
-                            </div>
+                            </article>
                         {{/each}}
-                    </div>
+                    </section>
                 {{/each}}
-            </div>
-        </div>
+            </article>
+        </section>
     </div>
-</div>
+</article>

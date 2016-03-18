@@ -21,15 +21,17 @@
      * @return {void}
      */
     function appearance() {
+        var firstIndicator;
+        var indicators = document.querySelectorAll('.product-indicator');
+        var firstProduct = document.querySelector('.appearance__item__product');
+
         if (!/appearance/.test(window.location.href)) {
             return;
         }
 
-        var firstProduct = document.querySelector('.appearance__item__product');
-        var firstIndicator = document.querySelector(
+        firstIndicator = document.querySelector(
             '.product-indicator[data-uuid="' + firstProduct.getAttribute('data-uuid') + '"]'
         );
-        var indicators = document.querySelectorAll('.product-indicator');
 
         firstProduct.classList.add('is-active');
         firstIndicator.classList.add('is-active');
@@ -56,6 +58,23 @@
     }
 
     /**
+     * Fetch the HTML for the href that is passed in.
+     *
+     * @param  {String} href
+     * @return {void}
+     */
+    function fetchHTML(href) {
+       fetch('http://localhost:3000/api' + href)
+           .then(function (response) { return response.text(); })
+           .then(function (body) {
+               document.querySelector('.inner-wrapper')
+                   .innerHTML = body;
+
+               onPageLoad();
+           });
+    }
+
+    /**
      * Set up everything that is needed for a single page application.
 
      * @return {void}
@@ -65,34 +84,40 @@
 
         Array.prototype.forEach.call(anchors, function (anchor) {
             anchor.addEventListener('click', function (event) {
-                event.preventDefault();
-
                 var href = event.currentTarget.getAttribute('href');
+
                 history.pushState(null, null, href);
                 fetchHTML(href);
+
+                event.preventDefault();
             });
         });
 
-        window.addEventListener('popstate', function() {
+        window.addEventListener('popstate', function () {
             fetchHTML(window.location.pathname);
         });
     }
 
-    /**
-     * Fetch the HTML for the href that is passed in.
-     *
-     * @param  {String} href
-     * @return {void}
-     */
-    function fetchHTML(href) {
-       fetch('http://0.0.0.0:3000/api' + href)
-           .then(function(response) { return response.text(); })
-           .then(function(body) {
-               document.querySelector('.inner-wrapper')
-                   .innerHTML = body;
 
-               onPageLoad();
-           });
+    /**
+     * Sets up the service worker.
+     *
+     * @return {Boolean}
+     */
+    function serviceWorker() {
+        if (!('serviceWorker' in navigator)) {
+            return false;
+        }
+
+        navigator.serviceWorker.register('/sw.js', { scope: './' })
+            .then(function () {
+
+            })
+            .catch(function (error) {
+                console.error('Error registering the service worker', error);
+            });
+
+        return true;
     }
 
     /**
@@ -104,6 +129,7 @@
     function onPageLoad() {
         spa();
         appearance();
+        serviceWorker();
     }
 
     ready(onPageLoad);

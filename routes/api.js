@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/appearance/:uuid', function(req, res, next) {
     fs.readFile('resources/appearance/'+req.params.uuid+'.json', 'utf8', function(err, data) {
-        if(err) {
+        if(err || !data) {
             res.status(404);
             next();
         }

@@ -1,9 +1,4 @@
-var VERSION = '0.1.2';
-
-this.addEventListener('install', function (event) {
-    console.log('Installing service worker');
-    console.log('Version', VERSION);
-});
+var VERSION = '0.1.3';
 
 this.addEventListener('activate', function (event) {
     clearOldCache(event);
@@ -29,10 +24,10 @@ function fetchAndCache(request) {
             caches
                 .open(VERSION, response)
                 .then(function (cache) {
-                    cache.put(request, response.clone());
+                    return cache.put(request, response);
                 });
 
-            return response;
+                return response.clone();
         });
 }
 

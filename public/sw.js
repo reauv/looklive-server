@@ -1,4 +1,4 @@
-var VERSION = '0.1.3';
+var VERSION = '0.1.4';
 
 this.addEventListener('activate', function (event) {
     clearOldCache(event);
@@ -10,6 +10,7 @@ this.addEventListener('fetch', function (event) {
             .match(event.request)
             .then(function (response) {
                 if (response) {
+                    fetchAndCache(event.request);
                     return response;
                 }
 

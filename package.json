@@ -12,9 +12,10 @@
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "hbs": "~3.1.0",
+    "minimist": "^1.2.0",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0",
-    "minimist": "^1.2.0"
+    "node-env-file": "^0.1.8",
+    "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
     "app-module-path": "^1.0.4",

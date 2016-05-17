@@ -33,12 +33,53 @@ The manifest file right now is only supported in Chrome & Opera, so much work to
 
 
 #### Sources:
-https://remysharp.com/2016/03/18/progressive-web-apps-the-long-game
-https://developers.google.com/web/progressive-web-apps?hl=en
-https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-https://developer.chrome.com/apps/manifest
-http://developer.telerik.com/featured/what-progressive-web-apps-mean-for-the-web/
-https://jakearchibald.github.io/isserviceworkerready/
+- https://remysharp.com/2016/03/18/progressive-web-apps-the-long-game
+- https://developers.google.com/web/progressive-web-apps?hl=en
+- https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+- https://developer.chrome.com/apps/manifest
+- http://developer.telerik.com/featured/what-progressive-web-apps-mean-for-the-web/
+- https://jakearchibald.github.io/isserviceworkerready/
+
+## Taskmanagers
+
+A taskmanager is a tool that can run various tasks in the background or before deploying
+to make some tedious tasks easier to do, like compiling SCSS to CSS or optimizing assets.
+
+There are various tasks manager that I've worked with like Grunt, Rake, Make, Webpack & NPM.
+They all have their up & downsides, but for most 'static websites' I tend to use Gulp.
+For larger Node & JS applications I like to use NPM & Webpack.
+
+The reason I prefer Gulp above Grunt is that the API is much more like a spoken language
+and makes your task file much easier to reason about.
+
+I went and looked at two other tasks tools I haven't used to see if they can convience me to
+trade Gulp in for one of them.
+
+### Broccoli
+Broccoli describes itself as follwing:
+> A fast, reliable asset pipeline, supporting constant-time rebuilds and compact build definitions.
+
+After scrolling through some example code & the API I am not really liking it, it feels really
+devious and compared to Gulp it's not elegant and self explanatory at all. They philosophy that
+you export a tree from the broccoli is not something that really makes sense to me.
+
+https://github.com/broccolijs/broccoli
+
+### Mimosa
+Mimosa works more out of the box, allowing you to just specify modules you want to use that 'just works'
+if you have your files in the correct directory structure. It allows you to configure this so it fits
+your project. I think Mimosa can get you up to speed really quickly but the downside is that it's
+not an asset pipeline tool so it's not as flexible as Gulp or Grunt.
+
+http://mimosa.io/index.html
+
+Both didn't convience me that they are a better choice than Gulp. Also the big community of Gulp
+plays a large part in the decision to stick with Gulp.
+
+
+
+
+
 
 
 

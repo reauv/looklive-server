@@ -32,7 +32,9 @@ if (process.env.NODE_ENV === 'development') {
     app.use('/static', express.static(path.join(__dirname, 'build/static')));
 } else {
     app.use(express.static(path.join(__dirname, 'dist/static')));
-    app.use('/static', express.static(path.join(__dirname, 'dist/static')));
+    app.use('/static', express.static(path.join(__dirname, 'dist/static'), {
+        maxage: '365d'
+    }));
 }
 
 app.use('/', routes);

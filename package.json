@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "pm2 start process.json",
-    "dev": "node ./bin/www",
+    "dev": "node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

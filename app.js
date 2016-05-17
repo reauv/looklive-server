@@ -11,7 +11,12 @@ var api = require('./routes/api');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+if (process.env.NODE_ENV === 'development') {
+    app.set('views', path.join(__dirname, 'build/views'));
+} else {
+    app.set('views', path.join(__dirname, 'dist/views'));
+}
+
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
@@ -20,7 +25,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+// Set public directory
+if (process.env.NODE_ENV === 'development') {
+    app.use(express.static(path.join(__dirname, 'build/static')));
+    app.use('/static', express.static(path.join(__dirname, 'build/static')));
+} else {
+    app.use(express.static(path.join(__dirname, 'dist/static')));
+    app.use('/static', express.static(path.join(__dirname, 'dist/static')));
+}
 
 app.use('/', routes);
 app.use('/api/', api);

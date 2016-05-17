@@ -1,0 +1,61 @@
+<article class="appearance" data-id="{{ item.id }}">
+    <div class="appearance__left">
+        <img class="appearance__image" src="{{ item.image.url }}">
+        {{#each item.product_occurrences}}
+            <div class="product-indicator" style="top: {{position.y}}%; left: {{position.x}}%;" data-uuid="{{product.id}}"></div>
+        {{/each}}
+    </div>
+    <div class="appearance__right">
+        <header>
+            <div class="appearance__person">
+                <img class="appearance__person__avatar" src="{{ item.subject.avatar.url }}">
+                <h2 class="appearance__person__name">{{ item.subject.name }}</h2>
+            </div>
+            <h1 class="appearance__title">{{ item.title }}</h1>
+        </header>
+
+        <section class="appearance__list">
+            <h1 class="appearance__list__title">Products</h1>
+            <article class="appearance__item">
+                {{#each products}}
+                    <section class="appearance__item__product" data-uuid="{{id}}">
+                        <article class="appearance__item__category">
+                            <header>
+                                <h1 class="appearance__item__category__title">
+                                    Actual
+                                </h1>
+                                <img src="{{image.url}}" class="appearance__item__product__image">
+                            </header>
+                            <div class="appearance__item__product__info">
+                                <h1 class="appearance__item__product__name">
+                                    {{ name }}
+                                </h1>
+                                <h2 class="appearance__item__product__brand">
+                                    {{ brand.name }}
+                                </h2>
+                            </div>
+                        </article>
+                        {{#each similars}}
+                            <article class="appearance__item__category">
+                                <header>
+                                    <h1 class="appearance__item__category__title">
+                                        Similar
+                                    </h1>
+                                    <img src="{{image.url}}" class="appearance__item__product__image appearance__item__product__image--similar">
+                                </header>
+                                <div class="appearance__item__product__info">
+                                    <h1 class="appearance__item__product__name">
+                                        {{ name }}
+                                    </h1>
+                                    <h2 class="appearance__item__product__brand">
+                                        {{ brand.name }}
+                                    </h2>
+                                </div>
+                            </article>
+                        {{/each}}
+                    </section>
+                {{/each}}
+            </article>
+        </section>
+    </div>
+</article>

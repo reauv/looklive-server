@@ -1,9 +1,14 @@
-<div class="feed-items">
+<section class="feed-list">
     {{#each items}}
-        <div class="feed-item" data-uuid="{{id}}">
-            <img src="{{ image.url }}">
-            <h2><img class="avatar" src="{{ subject.avatar.url }}"> {{ subject.name }}</h2>
-            <h1><a href="appearance/{{id}}">{{title}}</a></h1>
-        </div>
+        <article class="feed-list__item" data-uuid="{{id}}">
+            <img class="feed-list__item__image" src="{{ image.url }}">
+            <div class="feed-list__item__person">
+                <img class="feed-list__item__person__avatar" src="{{ subject.avatar.url }}">
+                <h2 class="feed-list__item__person__name">{{ subject.name }}</h2>
+            </div>
+            <a href="/appearance/{{id}}" class="link">
+                <h1 class="c-feed-list__item__title">{{title}}</h1>
+            </a>
+        </article>
     {{/each}}
-</div>
+</section>

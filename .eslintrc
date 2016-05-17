@@ -1,0 +1,12 @@
+{
+    "extends": "airbnb/legacy",
+    "rules": {
+        "indent": [0, 2],
+        "func-names": 0,
+        "no-use-before-define": 0,
+        "no-console": [2, { allow: ["warn", "error"] }],
+    },
+    "globals": {
+        "Promise": true,
+    }
+}

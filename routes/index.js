@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/appearance/:uuid', function(req, res, next) {
     fs.readFile('resources/appearance/'+req.params.uuid+'.json', 'utf8', function(err, data) {
-        if(err) {
+        if(err || !data) {
             res.status(404);
             next();
         }
@@ -27,8 +27,6 @@ router.get('/appearance/:uuid', function(req, res, next) {
             var product = fs.readFileSync('resources/product/'+occurrence.product.id+'.json', 'utf8');
             products.push(JSON.parse(product));
         });
-
-        console.log(products);
 
         res.render('appearance', { title: item.title, item: item , products: products});
     })

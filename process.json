@@ -1,5 +1,5 @@
 {
   "script": "./bin/www",
   "name": "minor-performance-matters",
-  "args": ["--PORT=3001"],
+  "args": ["--PORT=3001"]
 }

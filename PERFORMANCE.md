@@ -69,6 +69,15 @@ _no meaningful difference_
 
 ### Fonts
 
+- DOMContentLoaded at 284ms
+- First paint at 384ms
+- Load event at 726ms
+
+- Total size: 5.4MB
+- Number of requests: 334
+
+
+
 
 
 

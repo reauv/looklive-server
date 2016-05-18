@@ -2,33 +2,46 @@
 
 var gulp = require('gulp');
 var Config = require('config');
+var envify = require('envify');
+var watchify = require('watchify');
 var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
+var buffer = require('vinyl-buffer');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
 var server = require('browser-sync').get('server');
 
 /*
  |--------------------------------------------------------------------------
  | Scripts task
  |--------------------------------------------------------------------------
- | The scripts tasks concats all the JS files in the source directory and
- | all the bower dependencies specified in the config file.
+ | The scripts tasks uses browserify to bundle all the JavaScript together in
+ | a single file.
  |
  */
 
-var files = [].concat(Config.bowerDependencies, [
-    Config.paths.scripts.src + 'app.js'
-]);
+var options = {
+    entries: [Config.paths.scripts.src],
+    transform: [envify]
+};
+
+var b = watchify(browserify(options));
 
 gulp.task('scripts', function () {
-    return gulp.src(files)
-        .pipe(concat('all.js'))
+    return b.bundle()
+        .pipe(source('all.js'))
         .pipe(gulp.dest(Config.paths.scripts.dest))
         .pipe(server.stream());
 });
 
 gulp.task('scripts:production', function () {
-    return gulp.src(files)
-        .pipe(concat('all.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest(Config.paths.scripts.dest));
+    return browserify(options)
+        .bundle()
+        .pipe(source('all.js'))
+        .pipe(gulp.dest(Config.paths.scripts.dest))
+        .pipe(buffer())
+        .pipe(uglify());
 });
+
+module.exports = {
+    watchify: b
+};

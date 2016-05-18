@@ -5,6 +5,7 @@ var Config = require('config');
 var gutil = require('gulp-util');
 var watch = require('gulp-watch');
 var runSequence = require('run-sequence');
+var watchify = require('tasks/scripts').watchify;
 
 /*
  |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ gulp.task('watch', function () {
         gutil.log(gutil.colors.yellow('File in ' + Config.paths.images.src + ' has changed.'));
         runSequence('images');
     });
-    watch(Config.paths.scripts.src + '**/*.js', function () {
+    watchify.on('update', function () {
         gutil.log(gutil.colors.yellow('File in ' + Config.paths.scripts.src + ' has changed.'));
         runSequence(['jshint', 'scripts']);
     });

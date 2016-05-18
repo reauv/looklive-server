@@ -1,5 +1,8 @@
 'use strict';
 
+var env = require('node-env-file');
+env('./.env');
+
 /*
  |--------------------------------------------------------------------------
  | Set the root as path to require from.

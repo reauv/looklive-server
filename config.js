@@ -13,7 +13,7 @@ var paths = {
         dest: basePaths.dest + 'static/styles/'
     },
     scripts: {
-        src: basePaths.src + 'assets/scripts/',
+        src: basePaths.src + 'assets/scripts/app.js',
         dest: basePaths.dest + 'static/scripts/'
     },
     htdocs: {

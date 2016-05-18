@@ -45,6 +45,30 @@ All performance measured with network throttling set to DSL (2 Mb/s 5ms RTT)
 - First paint at 561ms
 - Load event at 849ms
 
+## Week 3
+
+### Service worker
+- DOMContentLoaded at 353ms
+- First paint at 561ms
+- Load event at 849ms
+
+### HTTP Requests
+- DOMContentLoaded at 267ms
+- First paint at 367ms
+- Load event at 843ms
+
+### Optimize images
+_no meaningful difference_
+
+- DOMContentLoaded at 267ms
+- First paint at 367ms
+- Load event at 843ms
+
+- Total size: 5.4MB
+- Number of requests: 335
+
+### Fonts
+
 
 
 

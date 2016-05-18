@@ -63,7 +63,6 @@ _no meaningful difference_
 - DOMContentLoaded at 267ms
 - First paint at 367ms
 - Load event at 843ms
-
 - Total size: 5.4MB
 - Number of requests: 335
 
@@ -72,7 +71,6 @@ _no meaningful difference_
 - DOMContentLoaded at 284ms
 - First paint at 384ms
 - Load event at 726ms
-
 - Total size: 5.4MB
 - Number of requests: 334
 

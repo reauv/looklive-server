@@ -60,5 +60,5 @@ gulp.task('build', function (callback) {
  |
  */
 gulp.task('compile', function (callback) {
-    runSequence('cleanup', 'views', ['htdocs', 'images', 'scripts:production', 'styles:production'], 'rev', 'move:production');
+    runSequence('cleanup', 'views', ['htdocs', 'images:production', 'scripts:production', 'styles:production'], 'rev', 'move:production');
 });

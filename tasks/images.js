@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var Config = require('config');
+var imagemin = require('gulp-imagemin');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,7 +13,13 @@ var Config = require('config');
  |
  */
 
-gulp.task('images', function() {
+gulp.task('images', function () {
     return gulp.src(Config.paths.images.src + '**/*')
+        .pipe(gulp.dest(Config.paths.images.dest));
+});
+
+gulp.task('images:production', function () {
+    return gulp.src(Config.paths.images.src + '**/*')
+        .pipe(imagemin())
         .pipe(gulp.dest(Config.paths.images.dest));
 });

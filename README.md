@@ -1,6 +1,23 @@
 # LookLive server
 https://performance.rovansteen.nl
 
+## Performance
+
+The findings of the performance can be find [here](PERFORMANCE.md).
+My approach with the service worker & caching might be a bit different from the
+other students as the best way to do this is not with a smart service worker that
+decides what to cache but with revisions that automatically 'bust' the cache
+once the content of the file is changed. That means you only fetch when the assets
+changed. This busting is done by addeding a hash to the file name based on the
+contents of the file. If a single byte of the file is changed the hash is different,
+so the browser cache and/or service worker can't match it with the one in cache
+and will fetch a new one.
+
+The only thing that could be improved to the service worker right now would be
+managing the 'busted' files, this could be realized by a regex that would search
+for the 'base file name' (like style.css or app.js) and delete the ones that have
+a different (old) hash.
+
 ## Progressive web app - Research
 
 What is a progressive web app? A progressive web app is an application that runs

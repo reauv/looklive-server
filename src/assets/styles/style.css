@@ -3,9 +3,14 @@
 }
 
 body {
-    font: 14px Raleway, Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
     background-color: #f1f1f1;
     margin: 0;
+}
+
+html.fonts-loaded body {
+    font-family: Raleway, Helvetica, Arial, sans-serif;
 }
 
 .nav {

@@ -1,6 +1,7 @@
 'use strict';
 
 var spa = require('./spa');
+var fonts = require('./fonts');
 var appearance = require('./appearance');
 var serviceWorker = require('./serviceWorker');
 
@@ -28,6 +29,7 @@ function onPageLoad() {
     spa(onPageLoad);
     appearance();
     serviceWorker();
+    fonts();
 }
 
 ready(onPageLoad);
